@@ -1,3 +1,5 @@
 name codio
 email codio@example.com
 password 123456
+
+password for another users is codio123456@
