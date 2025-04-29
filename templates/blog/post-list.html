@@ -1,0 +1,7 @@
+<!-- didn't work(No wrong message) + def recent_posts in blog_extra file + the part of it on post-deail file -->
+<h4>{{ title }}</h4>
+<ul>
+{% for post in posts %}
+    <li><a href="{% url "blog-post-detail" post.slug %}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>

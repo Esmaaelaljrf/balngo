@@ -1,95 +1,18 @@
 {% extends "base.html" %}
 {% load blog_extra %}
 {% block content %}
-
-
     <h2>Blog Posts</h2>
     {% for post in posts %}
-    <div class="row">
-        <div class="col">
+    {% row "border-bottom" %}
+        {% col %}
             <h3>{{ post.title }}</h3>
-            <small>By {{ post.author|author_details:request.user}} on {{ post.published_at|date:"M, d Y" }}</small>
+            {% include "blog/post-byline.html" %}
             <p>{{ post.summary }}</p>
             <p>
                 ({{ post.content|wordcount }} words)
-                <a href="#">Read More</a>
+                <a href="{% url "blog-post-detail" post.slug %}">Read More</a
             </p>
-        </div>
-    </div>
+        {% endcol %}
+    {% endrow %}
     {% endfor %}
-
-<!-- <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-6 bg-primary">Column 1</div>
-    <div class="col-xs-12 col-sm-2 col-md-2 bg-danger">Column 2</div>
-    <div class="col bg-success">Column 3</div>
-</div>
-
-
-
-
-<div class="row">
-    <div class="col bg-primary">Column 1</div>
-    <div class="col bg-danger">Column 2</div>
-    <div class="col bg-success">Column 3</div>
-</div> -->
-<!-- 
-
-<div class="alert alert-success" role="alert">
-  A simple success alert—check it out!
-</div>
-<div class="alert alert-danger" role="alert">
-  A simple danger alert—check it out!
-</div>
-<div class="alert alert-warning" role="alert">
-  A simple warning alert—check it out!
-</div> -->
-
-<!--Button-->
-<!-- <button type="button" class="btn btn-primary">Primary</button>
-<a href="#" class="btn btn-secondary">Secondary</a>
-<button type="button" class="btn btn-danger">Danger</button>
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    BootStrap Dropdown
-  </button>
-
-  
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Item 1</a></li>
-    <li><a class="dropdown-item" href="#">Item 2</a></li>
-    <li><a class="dropdown-item" href="#">Item 3</a></li>
-  </ul>
-</div>
-
-
-
-
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#example-modal">
-  Open Modal
-</button> -->
-
-
-<!--Model class Display screen-->
-<!-- <div class="modal" id="example-modal" tabindex="-1" aria-labelledby="example-modal-label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="example-modal-label">Modal Title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Modal Body
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
- -->
-
 {% endblock %}
