@@ -14,10 +14,26 @@
         {{ post.content|safe }}
     </div>
 {% endrow %}
-{% endblock %}
 
 {% row %}
     <div class="col">
-        {% recent_posts post %}<!-- didn't work(No wrong message) + def recent_posts in blog_extra file + post-list file -->
+        {% recent_posts post %}
     </div>
 {% endrow %}
+
+{% include "blog/post-comments.html" %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}<!-- IMPORTANT HAVE TO STAY THE LAST ROW -->
